@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 @Path("/kosarice")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@CrossOrigin(supportedHeaders = "GET, POST, PUT, DELETE")
+@CrossOrigin(supportedMethods = "GET, POST, PUT, DELETE")
 public class MikrostoritevZaKosariceResource {
 
     private Logger logger = Logger.getLogger(MikrostoritevZaKosariceResource.class.getName());
@@ -96,7 +96,7 @@ public class MikrostoritevZaKosariceResource {
                     schema = @Schema(implementation = Kosarica.class)
             )
     ) Kosarica kosarica) {
-        if(kosarica.getKosarica_id() == null || kosarica.getIme() == null) {
+        if(kosarica.getIme() == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         } else {
             kosarica = kosaricaBean.createKosarica(kosarica);
@@ -197,17 +197,13 @@ public class MikrostoritevZaKosariceResource {
             )
     })
     @DELETE
-    @Path("{kosaricaId}/izdelki")
+    @Path("{kosaricaId}/izdelki/{izdelekId}")
     public Response deleteIzdelekFromKosarica(@Parameter(description = "Kosarica ID.", required = true)
-                                         @PathParam("kosaricaId") Integer kosaricaId,
-                                         @RequestBody(
-                                                 description = "Objekt z informacijo o izdelku.",
-                                                 required = true,
-                                                 content = @Content(
-                                                         schema = @Schema(implementation = Izdelek.class)
-                                                 )
-                                         ) Izdelek izdelek) {
-        Kosarica kosarica = kosaricaBean.deleteIzdelekFromKosarica(kosaricaId, izdelek.getIzdelek_id());
+                                                  @PathParam("kosaricaId") Integer kosaricaId,
+                                              @Parameter(description = "Izdelek ID.", required = true)
+                                              @PathParam("izdelekId") Integer izdelekId
+                                         ) {
+        Kosarica kosarica = kosaricaBean.deleteIzdelekFromKosarica(kosaricaId, izdelekId);
         if(kosarica == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

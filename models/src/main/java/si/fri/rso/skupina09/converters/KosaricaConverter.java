@@ -13,7 +13,9 @@ public class KosaricaConverter {
     public static Kosarica toDto(KosaricaEntity kosaricaEntity) {
         Kosarica dto = new Kosarica();
         dto.setKosarica_id(kosaricaEntity.getKosarica_id());
-        dto.setIzdelki(kosaricaEntity.getIzdelki().stream().map(IzdelekConverter::toDto).collect(Collectors.toList()));
+        if (kosaricaEntity.getIzdelki() != null) {
+            dto.setIzdelki(kosaricaEntity.getIzdelki().stream().map(IzdelekConverter::toDto).collect(Collectors.toList()));
+        }
         dto.setIme(kosaricaEntity.getIme());
         return dto;
     }
@@ -21,7 +23,9 @@ public class KosaricaConverter {
     public static KosaricaEntity toEntity(Kosarica kosarica) {
         KosaricaEntity kosaricaEntity = new KosaricaEntity();
         kosaricaEntity.setKosarica_id(kosaricaEntity.getKosarica_id());
-        kosaricaEntity.setIzdelki(kosarica.getIzdelki().stream().map(IzdelekConverter::toEntity).collect(Collectors.toList()));
+        if (kosarica.getIzdelki() != null) {
+            kosaricaEntity.setIzdelki(kosarica.getIzdelki().stream().map(IzdelekConverter::toEntity).collect(Collectors.toList()));
+        }
         kosaricaEntity.setIme(kosarica.getIme());
         return kosaricaEntity;
     }

@@ -1,7 +1,6 @@
 package si.fri.rso.skupina09.lib;
 
 import java.time.Instant;
-import java.util.List;
 
 public class Izdelek {
 
