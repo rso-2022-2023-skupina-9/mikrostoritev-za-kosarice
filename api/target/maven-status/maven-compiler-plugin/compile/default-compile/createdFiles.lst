@@ -1,8 +1,0 @@
-si\fri\rso\skupina09\api\v1\interceptors\LogContextInterceptor.class
-si\fri\rso\skupina09\api\v1\filters\MaintenanceFilter.class
-si\fri\rso\skupina09\api\v1\health\CustomHealthCheck.class
-META-INF\resources\java.lang.Object
-META-INF\services\javax.ws.rs.core.Application
-si\fri\rso\skupina09\api\v1\resources\MikrostoritevZaKosariceResource.class
-si\fri\rso\skupina09\api\v1\resources\BrokenResource.class
-si\fri\rso\skupina09\api\v1\MikrostoritevZaKosarice.class
