@@ -209,4 +209,26 @@ public class MikrostoritevZaKosariceResource {
         }
         return Response.status(Response.Status.NO_CONTENT).entity(kosarica).build();
     }
+
+    @Operation(description = "Izracunaj skupno ceno kosarice.", summary = "Izracunaj ceno kosarice")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "Cena uspesno izracunana"
+            ),
+            @APIResponse(
+                    responseCode = "404",
+                    description = "Kosarica ne obstaja"
+            )
+    })
+    @GET
+    @Path("{kosaricaId}/cena")
+    public Response calculateCenaKosarice(@Parameter(description = "Kosarica ID.", required = true)
+                                              @PathParam("kosaricaId") Integer kosaricaId) {
+        Integer cenaKosarice = kosaricaBean.calculateCenaKosarice(kosaricaId);
+        if(cenaKosarice == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.status(Response.Status.OK).entity(String.format("{\"cena\": \"%d\"}", cenaKosarice)).build();
+    }
 }

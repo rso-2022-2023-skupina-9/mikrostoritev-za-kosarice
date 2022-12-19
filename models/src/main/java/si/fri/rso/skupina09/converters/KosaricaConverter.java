@@ -22,7 +22,6 @@ public class KosaricaConverter {
 
     public static KosaricaEntity toEntity(Kosarica kosarica) {
         KosaricaEntity kosaricaEntity = new KosaricaEntity();
-        kosaricaEntity.setKosarica_id(kosaricaEntity.getKosarica_id());
         if (kosarica.getIzdelki() != null) {
             kosaricaEntity.setIzdelki(kosarica.getIzdelki().stream().map(IzdelekConverter::toEntity).collect(Collectors.toList()));
         }

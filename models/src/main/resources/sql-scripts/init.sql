@@ -20,6 +20,6 @@ INSERT INTO izdelek(vrsta_id, trgovina_id, ime, cena, zadnja_sprememba) VALUES (
 INSERT INTO izdelek(vrsta_id, trgovina_id, ime, cena, zadnja_sprememba) VALUES ('7', '1', 'iStyle Apple Watch', '50900', '2022-10-26');
 INSERT INTO izdelek(vrsta_id, trgovina_id, ime, cena, zadnja_sprememba) VALUES ('2', '2', 'Epl Macbook Air', '179900', '2022-10-26');
 
-INSERT INTO kosarica(kosarica_id, ime) VALUES ('1', 'Apple Kosarica');
+INSERT INTO kosarica(ime) VALUES ('Apple Kosarica');
 
-INSERT INTO kosarica_izdelek(kosaricaentity_kosarica_id, izdelki_izdelek_id) VALUES ('1', '1');
+INSERT INTO kosarica_izdelek(kosarica_id, izdelek_id) VALUES ('1', '1');

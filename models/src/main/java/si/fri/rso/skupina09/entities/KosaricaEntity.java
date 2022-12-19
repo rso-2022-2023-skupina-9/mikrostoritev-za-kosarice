@@ -14,7 +14,14 @@ public class KosaricaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer kosarica_id;
 
-    @ManyToMany(targetEntity = IzdelekEntity.class)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "kosarica_izdelek",
+        joinColumns = @JoinColumn(name = "kosarica_id"),
+        inverseJoinColumns = @JoinColumn(name = "izdelek_id")
+    )
     private List<IzdelekEntity> izdelki;
 
     @Column(name = "ime")

@@ -40,6 +40,7 @@ public class KosaricaBean {
 
     public Kosarica getKosarica(Integer id) {
         KosaricaEntity kosaricaEntity = entityManager.find(KosaricaEntity.class, id);
+        entityManager.refresh(kosaricaEntity);
         if (kosaricaEntity == null) {
             throw new NotFoundException(String.format("Kosarica z id-jem: %d ne obstaja!", id));
         }
@@ -57,7 +58,7 @@ public class KosaricaBean {
             rollbackTx();
         }
         if (kosaricaEntity.getKosarica_id() == null) {
-            throw new RuntimeException("Kosarica entity ni bil dodan!");
+            throw new RuntimeException("Kosarica was not persisted!");
         }
         return KosaricaConverter.toDto(kosaricaEntity);
     }
@@ -149,6 +150,19 @@ public class KosaricaBean {
             }
         }
         return KosaricaConverter.toDto(novaKosarica);
+    }
+
+    public Integer calculateCenaKosarice(Integer kosaricaId) {
+        KosaricaEntity kosaricaEntity = entityManager.find(KosaricaEntity.class, kosaricaId);
+        if (kosaricaEntity == null) {
+            return null;
+        }
+        List<IzdelekEntity> izdelki = kosaricaEntity.getIzdelki();
+        Integer cena = 0;
+        for (IzdelekEntity izdelek : izdelki) {
+            cena += izdelek.getCena();
+        }
+        return cena;
     }
 
     private void beginTx() {
