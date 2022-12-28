@@ -56,9 +56,3 @@ kumuluzee:
                                    </Root>
                                </Loggers>
                            </Configuration>'
-  config:
-    consul:
-      agent: http://34.90.238.8
-config-properties:
-  maintenance-mode: false
-  broken: false
