@@ -13,7 +13,7 @@ spec:
         app: mikrostoritev-za-kosarice
     spec:
       containers:
-        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-28-21-57-04
+        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-28-22-33-56
           name: mikrostoritev-za-kosarice
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -29,21 +29,7 @@ spec:
             - containerPort: 8081
               name: server
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /health/live
-              port: server
-            initialDelaySeconds: 20
-            periodSeconds: 3
-          readinessProbe:
-            httpGet:
-              path: /health/ready
-              port: server
-            initialDelaySeconds: 20
-            periodSeconds: 3
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
