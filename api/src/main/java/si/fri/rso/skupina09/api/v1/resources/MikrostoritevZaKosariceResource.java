@@ -231,4 +231,18 @@ public class MikrostoritevZaKosariceResource {
         }
         return Response.status(Response.Status.OK).entity(String.format("{\"cena\": \"%d\"}", cenaKosarice)).build();
     }
+
+    @Operation(description = "Pridobi stevilo vseh kosaric", summary = "Stevilo vseh kosaric")
+    @APIResponses({
+            @APIResponse(
+                    responseCode = "200",
+                    description = "Uspesno pridobljeno stevilo kosaric"
+            )
+    })
+    @GET
+    @Path("stevilo")
+    public Response pridobiSteviloKosaric() {
+        List<Kosarica> kosarice = kosaricaBean.getKosarice();
+        return Response.status(Response.Status.OK).entity(Integer.valueOf(kosarice.size())).build();
+    }
 }

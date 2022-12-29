@@ -2,7 +2,6 @@ package si.fri.rso.skupina09.services.beans;
 
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
-import org.eclipse.microprofile.metrics.annotation.Timed;
 import si.fri.rso.skupina09.converters.KosaricaConverter;
 import si.fri.rso.skupina09.entities.IzdelekEntity;
 import si.fri.rso.skupina09.entities.KosaricaEntity;
@@ -32,7 +31,6 @@ public class KosaricaBean {
         return result.stream().map(KosaricaConverter::toDto).collect(Collectors.toList());
     }
 
-    @Timed
     public List<Kosarica> getKosarice(UriInfo uriInfo) {
         QueryParameters queryParameters = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0).build();
         return JPAUtils.queryEntities(entityManager, KosaricaEntity.class, queryParameters).stream().map(KosaricaConverter::toDto).collect(Collectors.toList());

@@ -25,10 +25,6 @@ kumuluzee:
       - models
       - lib
       - services
-  metrics:
-    web-instrumentation:
-      - name: kosarice-endpoint
-        url-pattern: /v1/kosarice/*
   logs:
     config-file: '<?xml version="1.0" encoding="UTF-8"?>
                            <Configuration name="comments">
