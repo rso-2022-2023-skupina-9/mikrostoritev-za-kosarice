@@ -38,10 +38,10 @@ public class KosaricaBean {
 
     public Kosarica getKosarica(Integer id) {
         KosaricaEntity kosaricaEntity = entityManager.find(KosaricaEntity.class, id);
-        entityManager.refresh(kosaricaEntity);
         if (kosaricaEntity == null) {
             throw new NotFoundException(String.format("Kosarica z id-jem: %d ne obstaja!", id));
         }
+        entityManager.refresh(kosaricaEntity);
         Kosarica kosarica = KosaricaConverter.toDto(kosaricaEntity);
         return kosarica;
     }

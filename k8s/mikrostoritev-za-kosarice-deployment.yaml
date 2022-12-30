@@ -13,7 +13,7 @@ spec:
         app: mikrostoritev-za-kosarice
     spec:
       containers:
-        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-28-22-59-38
+        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-29-06-48-09
           name: mikrostoritev-za-kosarice
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -35,7 +35,7 @@ kind: Service
 metadata:
   name: mikrostoritev-za-kosarice
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8081
       protocol: TCP
