@@ -45,3 +45,6 @@ kumuluzee:
                                    </Root>
                                </Loggers>
                            </Configuration>'
+rest-properties:
+  simulation: false
+  izdelki: http://localhost:8080/v1

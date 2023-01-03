@@ -13,7 +13,7 @@ spec:
         app: mikrostoritev-za-kosarice
     spec:
       containers:
-        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-29-06-48-09
+        - image: zk0821docker/mikrostoritev-za-kosarice:2022-12-30-05-46-50
           name: mikrostoritev-za-kosarice
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL

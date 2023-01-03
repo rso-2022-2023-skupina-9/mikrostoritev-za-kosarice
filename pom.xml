@@ -28,6 +28,7 @@
         <kumuluzee-config-mp.version>2.0.0</kumuluzee-config-mp.version>
         <kumuluzee-cors.version>1.0.6</kumuluzee-cors.version>
         <kumuluzee-logs.version>1.4.6</kumuluzee-logs.version>
+        <kumuluzee-fault-tolerance.version>2.1.1</kumuluzee-fault-tolerance.version>
 
         <postgresql.version>42.5.0</postgresql.version>
     </properties>
@@ -82,6 +83,12 @@
                 <groupId>com.kumuluz.ee.logs</groupId>
                 <artifactId>kumuluzee-logs-log4j2</artifactId>
                 <version>${kumuluzee-logs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.fault.tolerance</groupId>
+                <artifactId>kumuluzee-fault-tolerance-smallrye</artifactId>
+                <version>${kumuluzee-fault-tolerance.version}</version>
             </dependency>
 
             <dependency>
